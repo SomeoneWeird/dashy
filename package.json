@@ -1,0 +1,11 @@
+{
+  "name": "dashy",
+  "description": "Dashy is a JSON schema editor and documentation tool.",
+  "version": "0.0.1",
+  "authors": [
+    "Pomke <pomke@pomke.com>"
+  ],
+  "dependencies": {
+    "express" : "x.x.x"
+  }
+}

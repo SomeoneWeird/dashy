@@ -1,0 +1,74 @@
+[
+{
+    "properties": {
+        "A": {
+            "description": "A's description.",
+            "$ref": "http://jsonschema.net/examples/B.json"
+        }
+    }
+},
+
+{
+    "properties": {
+        "B": {
+            "description": "B's description",
+            "$ref": "http://jsonschema.net/examples/C.json"
+        }
+    }
+},
+
+
+{
+    "properties": {
+        "C": {
+            "description": "C's description.",
+            "type":"any"
+        }
+    }
+},
+
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "properties": {
+        "age": {
+            "type": "number"
+        },
+        "name": {
+            "type": "string"
+        }
+    },
+    "extends": {
+        "type":"string"
+    }
+},
+
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "properties": {
+        "age": {
+            "type": "number"
+        },
+        "name": {
+            "type": "string"
+        }
+    },
+    "extends": {
+        "$ref": "http://jsonschema.net/examples/B.json"
+    }
+},
+
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "properties": {
+        "age": {
+            "required": true,
+            "extends": {
+                "type": "number",
+                "required": false
+            }
+        }
+    }
+}]
