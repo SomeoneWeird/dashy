@@ -59,13 +59,15 @@ body {
     padding: 5px;
 }
 
-.json {
-    font-size: 10px;   
-
-}
-
 .type {
     color: #4D374D;
     font-size: 80%;
     font-weight: bold;
 }
+
+pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }

@@ -10,42 +10,68 @@
         <script src='lib/js/dashy.js'></script>
         <title ng-bind='schema.title'></title>
     </head>
+
     <body ng-controller="editor">
-        
+
         <ul class='objSelector'>
-            <li ng-repeat='s in schema' ng-click='loadSchema(s)'
-                ng-class="{'selected' : current.id == s.id}"
-            >
+
+            <li ng-repeat='s in schema' ng-click='loadSchema(s)' ng-class="{'selected' : current.id == s.id}">
+
                 {{s.id}}
+
             </li>
-            <li ng-click='newType()'>
+
+            <li ng-click='newSchema()'>
+
                 <b>+</b>
+
             </li>
+
         </ul> 
 
         <ul class='propSelector'>
-            <li ng-repeat='(name, p) in current.properties' ng-click='loadProperty(p)'
-                ng-class="{'selected' : current.id == p.id}"
-            >
-            {{name}} <span class='type'>({{p.type}})</span>
+
+            <li ng-repeat='(name, p) in current.properties' ng-click='loadProperty(p)' ng-class="{'selected' : current.id == p.id}" >
+
+                {{name}} 
+                <span class='type'> ({{p.type}}) </span>
+
             </li>
-            <li ng-click='newType()'>
+
+            <li ng-click='newAttribute()'>
+
                 <b>+</b>
+
             </li>
+
         </ul> 
 
 
         <div class='details'>
+
             <div class='info'>
-                <table>
-                    <tr> <th>name</th><td click-to-edit='current.id'></td> </tr>
-                    <tr> <th>type</th><td>{{current.type}}</td> </tr>
+
+                <table border=1>
+
+                    <thead>
+                        <td>Name</td>
+                        <td>Type</td>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td click-to-edit='current.name'>{{name}}</td>
+                            <td>{{current.type}}</td>
+                        </tr>
+
                 </table>
+
             </div>
-            <div class='json'>
-                <b ng-bind='getJSON()'></b>
-            </div>
+
+            <div ng-bind-html-unsafe='getJSON()'></div>
+
         </div>
 
     </body>
+
 </html>
