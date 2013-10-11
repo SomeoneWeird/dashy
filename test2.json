@@ -1,0 +1,15 @@
+{
+	
+	"id": "test json",
+	"properties": {
+
+		"age": {
+			"type": "number"
+		},
+		"name": {
+			"type": "string"
+		}
+
+	}
+
+}

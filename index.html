@@ -1,77 +1,93 @@
-<!doctype html>
-<html lang='en' ng-app='app'>
-    <head>
-        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.12.0/build/cssreset/cssreset-min.css">
-        <link href='lib/css/dashy.css' rel="stylesheet" type="text/css">
-        <script src='lib/js/prettify.min.js'></script>
-        <script src='lib/js/marked.min.js'></script>
-        <script src='lib/js/angular.min.js'></script>
-        <script src="/ace-builds-master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-        <script src='lib/js/dashy.js'></script>
-        <title ng-bind='schema.title'></title>
-    </head>
 
-    <body ng-controller="editor">
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
 
-        <ul class='objSelector'>
+    <meta charset="utf-8">
+    <title> {{ schema.title || 'Schema Name' }} </title>
 
-            <li ng-repeat='s in schema' ng-click='loadSchema(s)' ng-class="{'selected' : current.id == s.id}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-                {{s.id}}
+    <link rel="stylesheet" href="/lib/css/normalize.css">
+    <link rel="stylesheet" href="/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/css/xeditable.css">
+    <link rel="stylesheet" href="/lib/css/dashy.css">
 
-            </li>
+    <script src='lib/js/prettify.min.js'></script>
+    <script src='lib/js/marked.min.js'></script>
+    <script src='lib/js/angular.min.js'></script>
+    <script src="lib/js/xeditable.min.js"></script>
+    <script src='lib/js/dashy.js'></script>
 
-            <li ng-click='newSchema()'>
+</head>
 
-                <b>+</b>
+<body ng-controller="editor">
+    
+    <div class="container">
 
-            </li>
+        <div class="row">
+                
+            <div id="schemaSelector" class="col-lg-2">
+                
+                 <ul>
 
-        </ul> 
+                    <li ng-repeat='s in schema' ng-click='loadSchema(s)' ng-class="{'selected' : currentSchema.id == s.id}">
 
-        <ul class='propSelector'>
+                        {{ s.id }}
 
-            <li ng-repeat='(name, p) in current.properties' ng-click='loadProperty(p)' ng-class="{'selected' : current.id == p.id}" >
+                    </li>
 
-                {{name}} 
-                <span class='type'> ({{p.type}}) </span>
+                    <li ng-click='newSchema()'>
 
-            </li>
+                        <b>+</b>
 
-            <li ng-click='newAttribute()'>
+                    </li>
 
-                <b>+</b>
-
-            </li>
-
-        </ul> 
-
-
-        <div class='details'>
-
-            <div class='info'>
-
-                <table border=1>
-
-                    <thead>
-                        <td>Name</td>
-                        <td>Type</td>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td click-to-edit='current.name'>{{name}}</td>
-                            <td>{{current.type}}</td>
-                        </tr>
-
-                </table>
+                </ul>
 
             </div>
+                        
+            <div id="content" class="col-lg-8">
 
-            <div ng-bind-html-unsafe='getJSON()'></div>
+                <pre ng-bind-html-unsafe='getJSON()'></pre>
+            
+            </div>
 
+            <div id="sidebar" class="col-lg-2">
+
+                <div id="propSelector" class="col-md-12">
+
+                    <ul> 
+
+                        <li ng-repeat='(name, p) in currentSchema.properties' ng-click='loadProperty(p)' ng-class="{'selected' : currentSchema.id == p.id}" >
+
+                            {{ name }} 
+
+                            <span class='type'> ({{ p.type }}) </span>
+
+                        </li>
+
+                        <li ng-click='newAttribute()'>
+
+                            <b>+</b>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div id="attribSelector" class="col-md-12">
+
+                    
+
+                </div>
+
+            </div>
+                
         </div>
 
-    </body>
+    </div>
 
+</body>
 </html>
