@@ -59,7 +59,7 @@
 
                     <ul> 
 
-                        <li ng-repeat='(name, p) in currentSchema.properties' ng-click='loadProperty(p)' ng-class="{'selected' : currentSchema.id == p.id}" >
+                        <li ng-repeat='(name, p) in currentSchema.properties' ng-click='loadProperty(name, p)' ng-class="{'selected' : currentSchema.id == p.id}" >
 
                             {{ name }} 
 
@@ -79,7 +79,19 @@
 
                 <div id="attribSelector" class="col-md-12">
 
+                    <div ng-show="currentProperty.name.length > 0">
+
+                        <br>
+
+                        Editing <i> {{ currentProperty.name }} </i>
                     
+                        <br><br>
+
+                        Type: <a href="#"" editable-select="currentProperty.prop.type" e-ng-options="s.value as s.text for s in schemaTypes">
+                            {{ currentProperty.prop.type }}
+                        </a>
+
+                    </div>
 
                 </div>
 
